@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Silsilah Keluarga - Kelas 3 SD</title>
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Google Font: Quicksand -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+        /* ----- RESET & GLOBAL ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: #f0f4ff;
+            color: #1e2b3a;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e0e8f5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #6c8cff;
+            border-radius: 12px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ----- BUTTONS & BADGES ----- */
+        .btn-primary {
+            background: linear-gradient(135deg, #6c8cff, #a78bfa);
+            border: none;
+            padding: 12px 28px;
+            border-radius: 50px;
+            color: #fff;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s ease;
+            box-shadow: 0 8px 20px rgba(108, 140, 255, 0.35);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 28px rgba(108, 140, 255, 0.5);
+        }
+        .btn-primary i {
+            font-size: 1.2rem;
+        }
+
+        .btn-secondary {
+            background: #fff;
+            border: 2px solid #6c8cff;
+            padding: 10px 24px;
+            border-radius: 50px;
+            color: #6c8cff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-secondary:hover {
+            background: #6c8cff;
+            color: #fff;
+            transform: scale(1.03);
+        }
+
+        /* ----- NAVIGATION ----- */
+        nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.06);
+            border-bottom: 1px solid rgba(108, 140, 255, 0.15);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1e2b3a;
+        }
+        .logo i {
+            color: #6c8cff;
+            font-size: 2rem;
+            animation: pulse-logo 2.5s infinite;
+        }
+        @keyframes pulse-logo {
+            0%,
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+            50% {
+                transform: scale(1.12) rotate(6deg);
+            }
+        }
+        .logo span {
+            background: linear-gradient(135deg, #6c8cff, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-menu {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 18px;
+            list-style: none;
+        }
+        .nav-menu a {
+            text-decoration: none;
+            color: #2d3b4f;
+            font-weight: 600;
+            padding: 6px 0;
+            border-bottom: 3px solid transparent;
+            transition: 0.25s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.95rem;
+        }
+        .nav-menu a i {
+            color: #6c8cff;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            border-bottom-color: #6c8cff;
+            color: #6c8cff;
+        }
+        .nav-menu a:hover i {
+            transform: translateY(-3px) scale(1.15);
+        }
+
+        /* ----- HERO / BERANDA (dengan dashboard terintegrasi) ----- */
+        .hero {
+            padding: 40px 0 30px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1e2b3a, #6c8cff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #4a5a72;
+            max-width: 700px;
+            margin: 0 auto 20px;
+        }
+        .hero .icon-row {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 30px 0 10px;
+        }
+        .hero .icon-row i {
+            font-size: 3.2rem;
+            color: #6c8cff;
+            background: #fff;
+            padding: 18px;
+            border-radius: 30px;
+            box-shadow: 0 8px 30px rgba(108, 140, 255, 0.18);
+            transition: 0.4s;
+            animation: float-icon 3s infinite alternate ease-in-out;
+        }
+        .hero .icon-row i:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+        .hero .icon-row i:nth-child(3) {
+            animation-delay: 0.8s;
+        }
+        .hero .icon-row i:nth-child(4) {
+            animation-delay: 1.2s;
+        }
+        .hero .icon-row i:nth-child(5) {
+            animation-delay: 1.6s;
+        }
+        .hero .icon-row i:nth-child(6) {
+            animation-delay: 2.0s;
+        }
+        @keyframes float-icon {
+            0% {
+                transform: translateY(0px) scale(1);
+            }
+            100% {
+                transform: translateY(-14px) scale(1.05);
+            }
+        }
+
+        /* ----- DASHBOARD TERINTEGRASI DI BERANDA ----- */
+        .dash-wrapper {
+            background: linear-gradient(145deg, #ffffff, #f8faff);
+            border-radius: 40px;
+            padding: 28px 30px 20px;
+            box-shadow: 0 20px 60px rgba(108, 140, 255, 0.10);
+            border: 1px solid rgba(108, 140, 255, 0.10);
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+        }
+        .dash-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(108, 140, 255, 0.04) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .dash-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .dash-header h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #1e2b3a;
+        }
+        .dash-header h2 i {
+            color: #6c8cff;
+        }
+        .dash-level-badge {
+            background: linear-gradient(135deg, #6c8cff, #a78bfa);
+            padding: 8px 22px;
+            border-radius: 40px;
+            color: #fff;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+        .dash-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin: 10px 0 14px;
+        }
+        .dash-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 24px;
+            padding: 16px 12px;
+            text-align: center;
+            border: 1px solid rgba(108, 140, 255, 0.08);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.02);
+            transition: 0.3s;
+        }
+        .dash-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(108, 140, 255, 0.08);
+        }
+        .dash-card i {
+            font-size: 2.2rem;
+            color: #6c8cff;
+            margin-bottom: 4px;
+            display: block;
+        }
+        .dash-card .nilai {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e2b3a;
+        }
+        .dash-card .label {
+            font-size: 0.8rem;
+            color: #5a6f8a;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .dash-card .sub-label {
+            font-size: 0.7rem;
+            color: #7a8fa8;
+        }
+        .dash-tree {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            border-top: 2px dashed #d6e0ff;
+            padding-top: 16px;
+            margin-top: 6px;
+            flex-wrap: wrap;
+        }
+        .dash-tree span {
+            font-weight: 600;
+            color: #1e2b3a;
+        }
+        .dash-tree .tree-icons {
+            display: flex;
+            gap: 6px;
+            font-size: 1.6rem;
+            color: #cbd5e1;
+        }
+        .dash-tree .tree-icons .aktif {
+            color: #6c8cff;
+            animation: pop-tree 0.6s ease;
+        }
+        @keyframes pop-tree {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            70% {
+                transform: scale(1.3);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* ----- SECTION COMMON ----- */
+        section {
+            padding: 50px 0 40px;
+        }
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: #1e2b3a;
+        }
+        .section-title i {
+            color: #6c8cff;
+            font-size: 2.4rem;
+        }
+        .section-sub {
+            color: #5a6f8a;
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+            border-left: 4px solid #6c8cff;
+            padding-left: 18px;
+        }
+
+        /* ----- MATERI (Family Tree) ----- */
+        .materi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+        @media (max-width: 820px) {
+            .materi-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .materi-card {
+            background: #fff;
+            border-radius: 28px;
+            padding: 28px 26px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(108, 140, 255, 0.10);
+            transition: 0.3s;
+        }
+        .materi-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(108, 140, 255, 0.12);
+        }
+        .materi-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .materi-card h3 i {
+            color: #6c8cff;
+        }
+        .materi-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .materi-card ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f4ff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.05rem;
+        }
+        .materi-card ul li i {
+            color: #a78bfa;
+            width: 24px;
+            text-align: center;
+        }
+
+        /* Family tree diagram (visual) */
+        .tree-diagram {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 24px 20px 30px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(108, 140, 255, 0.10);
+            text-align: center;
+        }
+        .tree-diagram h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        .tree-diagram h3 i {
+            color: #6c8cff;
+        }
+        .tree-node {
+            display: inline-block;
+            background: linear-gradient(135deg, #eef3ff, #ffffff);
+            padding: 10px 22px;
+            border-radius: 40px;
+            margin: 6px 8px;
+            font-weight: 600;
+            border: 2px solid #d6e0ff;
+            box-shadow: 0 4px 12px rgba(108, 140, 255, 0.08);
+            transition: 0.2s;
+        }
+        .tree-node i {
+            color: #6c8cff;
+            margin-right: 8px;
+        }
+        .tree-node:hover {
+            transform: scale(1.05);
+            border-color: #6c8cff;
+        }
+        .tree-level {
+            margin: 12px 0;
+        }
+        .tree-arrow {
+            font-size: 1.8rem;
+            color: #a78bfa;
+            display: block;
+            margin: 4px 0;
+        }
+
+        /* ----- LKPD (Worksheet) ----- */
+        .lkpd-box {
+            background: #fff;
+            border-radius: 28px;
+            padding: 30px 28px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(108, 140, 255, 0.10);
+        }
+        .lkpd-box .soal {
+            background: #f8faff;
+            border-radius: 18px;
+            padding: 18px 22px;
+            margin-bottom: 20px;
+            border-left: 6px solid #6c8cff;
+        }
+        .lkpd-box .soal p {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        .lkpd-box .soal label {
+            display: block;
+            padding: 6px 0;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .lkpd-box .soal input[type="radio"] {
+            margin-right: 12px;
+            accent-color: #6c8cff;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        .lkpd-box .soal input[type="text"] {
+            border: 2px solid #d6e0ff;
+            border-radius: 30px;
+            padding: 10px 18px;
+            width: 100%;
+            max-width: 320px;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+            font-family: 'Quicksand', sans-serif;
+        }
+        .lkpd-box .soal input[type="text"]:focus {
+            border-color: #6c8cff;
+            box-shadow: 0 0 0 4px rgba(108, 140, 255, 0.15);
+        }
+        .lkpd-box .soal .jawaban-benar {
+            color: #22b573;
+            font-weight: 600;
+            margin-top: 8px;
+            display: none;
+        }
+        .lkpd-box .soal .jawaban-salah {
+            color: #e74c5e;
+            font-weight: 600;
+            margin-top: 8px;
+            display: none;
+        }
+        .lkpd-box .soal.show-feedback .jawaban-benar,
+        .lkpd-box .soal.show-feedback .jawaban-salah {
+            display: block;
+        }
+
+        /* ----- INTERAKSI (Guru & Orang Tua) ----- */
+        .interaksi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        @media (max-width: 760px) {
+            .interaksi-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .interaksi-card {
+            background: #fff;
+            border-radius: 28px;
+            padding: 26px 24px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(108, 140, 255, 0.10);
+            transition: 0.3s;
+        }
+        .interaksi-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(108, 140, 255, 0.10);
+        }
+        .interaksi-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .interaksi-card h4 i {
+            color: #6c8cff;
+        }
+        .interaksi-card textarea {
+            width: 100%;
+            border: 2px solid #e0e8f5;
+            border-radius: 18px;
+            padding: 14px 16px;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 80px;
+            font-family: 'Quicksand', sans-serif;
+            transition: 0.3s;
+            outline: none;
+        }
+        .interaksi-card textarea:focus {
+            border-color: #6c8cff;
+            box-shadow: 0 0 0 4px rgba(108, 140, 255, 0.10);
+        }
+        .interaksi-card .feedback-list {
+            margin-top: 16px;
+            max-height: 160px;
+            overflow-y: auto;
+        }
+        .interaksi-card .feedback-item {
+            background: #f8faff;
+            padding: 12px 16px;
+            border-radius: 16px;
+            margin-bottom: 10px;
+            border-left: 4px solid #6c8cff;
+            font-size: 0.95rem;
+        }
+        .interaksi-card .feedback-item strong {
+            color: #1e2b3a;
+        }
+        .interaksi-card .feedback-item small {
+            color: #7a8fa8;
+            font-size: 0.8rem;
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* ----- EVALUASI (Quiz) ----- */
+        .quiz-box {
+            background: #fff;
+            border-radius: 28px;
+            padding: 30px 28px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(108, 140, 255, 0.10);
+        }
+        .quiz-box .quiz-item {
+            background: #f8faff;
+            border-radius: 18px;
+            padding: 18px 22px;
+            margin-bottom: 18px;
+            border-left: 6px solid #a78bfa;
+        }
+        .quiz-box .quiz-item p {
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+        .quiz-box .quiz-item label {
+            display: block;
+            padding: 4px 0;
+            cursor: pointer;
+        }
+        .quiz-box .quiz-item input[type="radio"] {
+            margin-right: 12px;
+            accent-color: #a78bfa;
+            width: 17px;
+            height: 17px;
+            cursor: pointer;
+        }
+        .quiz-box .quiz-item .quiz-feedback {
+            margin-top: 8px;
+            font-weight: 600;
+            display: none;
+        }
+        .quiz-box .quiz-item .quiz-feedback.benar {
+            color: #22b573;
+        }
+        .quiz-box .quiz-item .quiz-feedback.salah {
+            color: #e74c5e;
+        }
+        .quiz-box .quiz-item.show-feedback .quiz-feedback {
+            display: block;
+        }
+        .quiz-score {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #6c8cff;
+            margin-top: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* ----- FOOTER ----- */
+        footer {
+            background: #1e2b3a;
+            color: #cbd5e1;
+            padding: 32px 0 24px;
+            margin-top: 30px;
+            border-radius: 40px 40px 0 0;
+        }
+        footer .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+        footer .footer-icons i {
+            font-size: 2rem;
+            margin: 0 8px;
+            color: #6c8cff;
+            transition: 0.3s;
+        }
+        footer .footer-icons i:hover {
+            transform: scale(1.2) rotate(6deg);
+            color: #a78bfa;
+        }
+        footer p {
+            font-size: 0.95rem;
+        }
+
+        /* ----- RESPONSIVE FINE-TUNE ----- */
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .section-title {
+                font-size: 1.7rem;
+            }
+            .nav-wrapper {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .nav-menu {
+                justify-content: center;
+            }
+            .logo {
+                justify-content: center;
+            }
+            .tree-node {
+                padding: 6px 14px;
+                font-size: 0.85rem;
+            }
+            .dash-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .dash-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        /* Animasi masuk */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.7s ease forwards;
+        }
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+        .delay-4 {
+            animation-delay: 0.4s;
+        }
+        .delay-5 {
+            animation-delay: 0.5s;
+        }
+
+        /* Confetti sederhana */
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            overflow: hidden;
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            opacity: 0.8;
+            animation: confetti-fall 3s ease-in forwards;
+        }
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-10px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGASI ===== -->
+    <nav>
+        <div class="container nav-wrapper">
+            <div class="logo">
+                <i class="fas fa-tree"></i>
+                <span>SilsilahKeluarga</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#beranda" class="active"><i class="fas fa-home"></i> Beranda</a></li>
+                <li><a href="#materi"><i class="fas fa-book-open"></i> Materi</a></li>
+                <li><a href="#lkpd"><i class="fas fa-pencil-alt"></i> LKPD</a></li>
+                <li><a href="#interaksi"><i class="fas fa-comments"></i> Interaksi</a></li>
+                <li><a href="#evaluasi"><i class="fas fa-star"></i> Evaluasi</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===== BERANDA + DASHBOARD TERINTEGRASI ===== -->
+    <section id="beranda" class="hero container fade-up">
+        <h1><i class="fas fa-people-arrows" style="color:#6c8cff; -webkit-text-fill-color:#6c8cff;"></i> Silsilah Keluarga</h1>
+        <p>Belajar silsilah keluarga jadi menyenangkan! Kenali ayah, ibu, kakek, nenek, dan saudara-saudaramu. <br /> <strong>Kelas 3 SD</strong> — Yuk, jelajahi!</p>
+        <div class="icon-row">
+            <i class="fas fa-father"></i>
+            <i class="fas fa-mother"></i>
+            <i class="fas fa-grandfather"></i>
+            <i class="fas fa-grandmother"></i>
+            <i class="fas fa-child"></i>
+            <i class="fas fa-users"></i>
+        </div>
+        <div style="margin-top: 18px;">
+            <a href="#materi" class="btn-primary"><i class="fas fa-graduation-cap"></i> Mulai Belajar</a>
+            <a href="#lkpd" class="btn-secondary" style="margin-left: 12px;"><i class="fas fa-tasks"></i> Kerjakan LKPD</a>
+        </div>
+
+        <!-- ===== DASHBOARD ===== -->
+        <div class="dash-wrapper" id="dashboard">
+            <div class="dash-header">
+                <h2><i class="fas fa-chart-pie"></i> Dashboard Prestasiku</h2>
+                <span class="dash-level-badge" id="levelBadge"><i class="fas fa-seedling"></i> Pemula</span>
+            </div>
+            <div class="dash-grid">
+                <div class="dash-card">
+                    <i class="fas fa-puzzle-piece"></i>
+                    <div class="nilai" id="dashLkpd">0</div>
+                    <div class="label">LKPD Benar</div>
+                    <div class="sub-label">dari 3 soal</div>
+                </div>
+                <div class="dash-card">
+                    <i class="fas fa-star"></i>
+                    <div class="nilai" id="dashQuiz">0</div>
+                    <div class="label">Kuis Benar</div>
+                    <div class="sub-label">dari 3 soal</div>
+                </div>
+                <div class="dash-card">
+                    <i class="fas fa-comment-dots"></i>
+                    <div class="nilai" id="dashPesanGuru">0</div>
+                    <div class="label">Pesan ke Guru</div>
+                    <div class="sub-label">total</div>
+                </div>
+                <div class="dash-card">
+                    <i class="fas fa-comment-dots" style="color:#a78bfa;"></i>
+                    <div class="nilai" id="dashPesanOrtu">0</div>
+                    <div class="label">Pesan ke Orang Tua</div>
+                    <div class="sub-label">total</div>
+                </div>
+                <div class="dash-card">
+                    <i class="fas fa-medal"></i>
+                    <div class="nilai" id="dashTotalBintang">0</div>
+                    <div class="label">Total Bintang ⭐</div>
+                    <div class="sub-label">kumpulkan!</div>
+                </div>
+            </div>
+            <div class="dash-tree">
+                <span>🌱 Pohon Keluargaku:</span>
+                <span class="tree-icons" id="treeProgress">
+                    <i class="fas fa-tree" data-level="1"></i>
+                    <i class="fas fa-tree" data-level="2"></i>
+                    <i class="fas fa-tree" data-level="3"></i>
+                    <i class="fas fa-tree" data-level="4"></i>
+                    <i class="fas fa-tree" data-level="5"></i>
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MATERI ===== -->
+    <section id="materi" class="container fade-up delay-1">
+        <div class="section-title"><i class="fas fa-book-open"></i> Materi Silsilah Keluarga</div>
+        <div class="section-sub">Kenali anggota keluargamu dari generasi ke generasi.</div>
+
+        <div class="materi-grid">
+            <!-- Kiri: penjelasan -->
+            <div class="materi-card">
+                <h3><i class="fas fa-info-circle"></i> Apa itu Silsilah?</h3>
+                <p style="margin-bottom: 14px; color:#3d4f66;">Silsilah keluarga adalah bagan yang menunjukkan hubungan antar anggota keluarga dari generasi ke generasi. Ini membantumu mengenal siapa saja keluargamu.</p>
+                <ul>
+                    <li><i class="fas fa-male"></i> <strong>Ayah</strong> — kepala keluarga, suami dari ibu</li>
+                    <li><i class="fas fa-female"></i> <strong>Ibu</strong> — istri dari ayah, ibu dari anak-anak</li>
+                    <li><i class="fas fa-male"></i> <strong>Kakek</strong> — ayah dari ayah atau ibu</li>
+                    <li><i class="fas fa-female"></i> <strong>Nenek</strong> — ibu dari ayah atau ibu</li>
+                    <li><i class="fas fa-child"></i> <strong>Anak</strong> — keturunan dari ayah dan ibu</li>
+                    <li><i class="fas fa-user-friends"></i> <strong>Saudara</strong> — kakak atau adik</li>
+                </ul>
+            </div>
+
+            <!-- Kanan: diagram pohon keluarga -->
+            <div class="tree-diagram">
+                <h3><i class="fas fa-tree"></i> Pohon Keluarga</h3>
+                <div class="tree-level">
+                    <span class="tree-node"><i class="fas fa-male"></i> Kakek</span>
+                    <span class="tree-node"><i class="fas fa-female"></i> Nenek</span>
+                    <span class="tree-node"><i class="fas fa-male"></i> Kakek</span>
+                    <span class="tree-node"><i class="fas fa-female"></i> Nenek</span>
+                </div>
+                <i class="fas fa-arrow-down tree-arrow"></i>
+                <div class="tree-level">
+                    <span class="tree-node"><i class="fas fa-male"></i> Ayah</span>
+                    <span class="tree-node"><i class="fas fa-female"></i> Ibu</span>
+                </div>
+                <i class="fas fa-arrow-down tree-arrow"></i>
+                <div class="tree-level">
+                    <span class="tree-node"><i class="fas fa-child"></i> Kamu</span>
+                    <span class="tree-node"><i class="fas fa-child"></i> Kakak</span>
+                    <span class="tree-node"><i class="fas fa-child"></i> Adik</span>
+                </div>
+                <p style="margin-top: 18px; color:#5a6f8a; font-size:0.95rem;"><i class="fas fa-arrow-right" style="color:#6c8cff;"></i> Setiap anak memiliki ayah dan ibu, dan setiap ayah/ibu memiliki orang tua (kakek/nenek).</p>
+            </div>
+        </div>
+
+        <!-- tambahan contoh silsilah -->
+        <div style="margin-top: 30px; background: #fff; border-radius: 28px; padding: 24px 28px; box-shadow: 0 8px 30px rgba(0,0,0,0.04); border:1px solid rgba(108,140,255,0.08);">
+            <h4 style="display:flex; align-items:center; gap:12px; margin-bottom:12px;"><i class="fas fa-pen-fancy" style="color:#6c8cff;"></i> Contoh Silsilah Keluarga</h4>
+            <p style="background:#f8faff; border-radius:16px; padding:16px 20px; border-left:6px solid #a78bfa;">
+                <strong>Keluarga Ahmad:</strong> Kakek Hasan &amp; Nenek Fatimah → Ayah Budi &amp; Ibu Siti → Anak: Ahmad (kamu), Rina (kakak), dan Dodi (adik).
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== LKPD (Worksheet) ===== -->
+    <section id="lkpd" class="container fade-up delay-2">
+        <div class="section-title"><i class="fas fa-pencil-alt"></i> LKPD — Lembar Kerja Peserta Didik</div>
+        <div class="section-sub">Kerjakan soal-soal berikut dengan teliti. Klik tombol <strong>"Periksa Semua"</strong> untuk melihat jawabanmu!</div>
+
+        <div class="lkpd-box" id="lkpdBox">
+            <!-- Soal 1 -->
+            <div class="soal" id="soal1">
+                <p><i class="fas fa-question-circle" style="color:#6c8cff;"></i> 1. Siapa nama ayah dari ayahmu?</p>
+                <label><input type="radio" name="q1" value="kakek"> Kakek</label>
+                <label><input type="radio" name="q1" value="nenek"> Nenek</label>
+                <label><input type="radio" name="q1" value="paman"> Paman</label>
+                <div class="jawaban-benar"><i class="fas fa-check-circle"></i> Benar! Ayah dari ayah adalah Kakek.</div>
+                <div class="jawaban-salah"><i class="fas fa-times-circle"></i> Coba lagi, ingatlah ayah dari ayahmu adalah Kakek.</div>
+            </div>
+
+            <!-- Soal 2 -->
+            <div class="soal" id="soal2">
+                <p><i class="fas fa-question-circle" style="color:#6c8cff;"></i> 2. Ibu dari ibumu disebut ...</p>
+                <label><input type="radio" name="q2" value="nenek"> Nenek</label>
+                <label><input type="radio" name="q2" value="tante"> Tante</label>
+                <label><input type="radio" name="q2" value="bibi"> Bibi</label>
+                <div class="jawaban-benar"><i class="fas fa-check-circle"></i> Tepat! Ibu dari ibu adalah Nenek.</div>
+                <div class="jawaban-salah"><i class="fas fa-times-circle"></i> Ibu dari ibumu adalah Nenek, bukan Tante atau Bibi.</div>
+            </div>
+
+            <!-- Soal 3 (isi text) -->
+            <div class="soal" id="soal3">
+                <p><i class="fas fa-question-circle" style="color:#6c8cff;"></i> 3. Siapa nama kakak atau adikmu? (Tulis salah satu)</p>
+                <input type="text" id="jawabanSaudara" placeholder="Contoh: Rina" />
+                <div style="margin-top:10px; display:flex; gap:12px; flex-wrap:wrap;">
+                    <button class="btn-primary" style="padding:8px 20px; font-size:0.9rem;" onclick="cekSaudara()"><i class="fas fa-check"></i> Periksa</button>
+                    <button class="btn-secondary" style="padding:8px 20px; font-size:0.9rem;" onclick="resetSaudara()"><i class="fas fa-undo"></i> Ulang</button>
+                </div>
+                <div class="jawaban-benar" id="feedbackSaudaraBenar" style="display:none;"><i class="fas fa-check-circle"></i> Bagus! Kamu punya saudara yang spesial.</div>
+                <div class="jawaban-salah" id="feedbackSaudaraSalah" style="display:none;"><i class="fas fa-info-circle"></i> Tulis nama kakak atau adikmu, misal: Rina, Budi, dll.</div>
+            </div>
+
+            <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-top: 8px;">
+                <button class="btn-primary" onclick="periksaSemua()"><i class="fas fa-check-double"></i> Periksa Semua</button>
+                <button class="btn-secondary" onclick="resetSemua()"><i class="fas fa-redo"></i> Reset</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== INTERAKSI (Guru & Orang Tua) ===== -->
+    <section id="interaksi" class="container fade-up delay-3">
+        <div class="section-title"><i class="fas fa-comments"></i> Interaksi Guru &amp; Orang Tua</div>
+        <div class="section-sub">Tulis pesan atau tanggapan untuk guru atau orang tua. Saling berbagi tentang silsilah keluarga!</div>
+
+        <div class="interaksi-grid">
+            <!-- Untuk Guru -->
+            <div class="interaksi-card">
+                <h4><i class="fas fa-chalkboard-teacher"></i> Untuk Guru</h4>
+                <textarea id="pesanGuru" placeholder="Tulis pertanyaan atau komentar untuk guru..." rows="3"></textarea>
+                <div style="margin-top:12px; display:flex; gap:12px; flex-wrap:wrap;">
+                    <button class="btn-primary" style="padding:8px 22px; font-size:0.9rem;" onclick="kirimPesan('guru')"><i class="fas fa-paper-plane"></i> Kirim ke Guru</button>
+                </div>
+                <div class="feedback-list" id="feedGuru">
+                    <div class="feedback-item"><strong>Guru:</strong> <span>Silsilah keluarga sangat penting, kenali keluargamu dengan baik ya!</span> <small>— 2 jam lalu</small></div>
+                </div>
+            </div>
+
+            <!-- Untuk Orang Tua -->
+            <div class="interaksi-card">
+                <h4><i class="fas fa-user-friends"></i> Untuk Orang Tua</h4>
+                <textarea id="pesanOrtu" placeholder="Tulis pertanyaan atau komentar untuk orang tua..." rows="3"></textarea>
+                <div style="margin-top:12px; display:flex; gap:12px; flex-wrap:wrap;">
+                    <button class="btn-primary" style="padding:8px 22px; font-size:0.9rem;" onclick="kirimPesan('ortu')"><i class="fas fa-paper-plane"></i> Kirim ke Orang Tua</button>
+                </div>
+                <div class="feedback-list" id="feedOrtu">
+                    <div class="feedback-item"><strong>Orang Tua:</strong> <span>Ayo ceritakan tentang kakek dan nenekmu!</span> <small>— 1 jam lalu</small></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== EVALUASI (Quiz) ===== -->
+    <section id="evaluasi" class="container fade-up delay-4">
+        <div class="section-title"><i class="fas fa-star"></i> Evaluasi — Kuis Silsilah</div>
+        <div class="section-sub">Jawab pertanyaan berikut untuk menguji pemahamanmu!</div>
+
+        <div class="quiz-box" id="quizBox">
+            <!-- Quiz 1 -->
+            <div class="quiz-item" id="quiz1">
+                <p>1. Siapa yang dimaksud dengan "kakek"?</p>
+                <label><input type="radio" name="quiz1" value="a"> Ayah dari ayah</label>
+                <label><input type="radio" name="quiz1" value="b"> Saudara laki-laki</label>
+                <label><input type="radio" name="quiz1" value="c"> Anak laki-laki</label>
+                <div class="quiz-feedback benar">✅ Benar! Kakek adalah ayah dari ayah atau ibu.</div>
+                <div class="quiz-feedback salah">❌ Coba lagi! Kakek adalah ayah dari orang tuamu.</div>
+            </div>
+
+            <!-- Quiz 2 -->
+            <div class="quiz-item" id="quiz2">
+                <p>2. Ayah dan ibu memiliki anak. Anak-anak itu disebut ...</p>
+                <label><input type="radio" name="quiz2" value="a"> Saudara</label>
+                <label><input type="radio" name="quiz2" value="b"> Sepupu</label>
+                <label><input type="radio" name="quiz2" value="c"> Paman</label>
+                <div class="quiz-feedback benar">✅ Tepat! Anak-anak dari ayah dan ibu adalah saudara.</div>
+                <div class="quiz-feedback salah">❌ Yang dimaksud adalah saudara (kakak/adik).</div>
+            </div>
+
+            <!-- Quiz 3 -->
+            <div class="quiz-item" id="quiz3">
+                <p>3. Ibu dari ibumu adalah ...</p>
+                <label><input type="radio" name="quiz3" value="a"> Nenek</label>
+                <label><input type="radio" name="quiz3" value="b"> Tante</label>
+                <label><input type="radio" name="quiz3" value="c"> Bibi</label>
+                <div class="quiz-feedback benar">✅ Benar! Ibu dari ibu adalah nenek.</div>
+                <div class="quiz-feedback salah">❌ Ibu dari ibumu adalah nenek, bukan tante atau bibi.</div>
+            </div>
+
+            <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-top:10px;">
+                <button class="btn-primary" onclick="periksaQuiz()"><i class="fas fa-check-double"></i> Periksa Kuis</button>
+                <button class="btn-secondary" onclick="resetQuiz()"><i class="fas fa-undo"></i> Ulangi Kuis</button>
+            </div>
+            <div class="quiz-score" id="quizScore"><i class="fas fa-trophy"></i> Skor: <span id="skorAngka">0</span> / 3</div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <p><i class="fas fa-tree" style="color:#6c8cff;"></i> SilsilahKeluarga — Media Ajar Kelas 3 SD</p>
+            <div class="footer-icons">
+                <i class="fab fa-youtube"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-whatsapp"></i>
+                <i class="fas fa-envelope"></i>
+            </div>
+            <p style="font-size:0.85rem;">&copy; 2026 • Interaktif untuk Siswa, Guru, dan Orang Tua</p>
+        </div>
+    </footer>
+
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // ========== STATE GLOBAL ==========
+        let state = {
+            lkpdBenar: 0,
+            quizBenar: 0,
+            pesanGuru: 0,
+            pesanOrtu: 0,
+            totalBintang: 0
+        };
+
+        // ========== DASHBOARD UPDATE ==========
+        function updateDashboard() {
+            document.getElementById('dashLkpd').textContent = state.lkpdBenar;
+            document.getElementById('dashQuiz').textContent = state.quizBenar;
+            document.getElementById('dashPesanGuru').textContent = state.pesanGuru;
+            document.getElementById('dashPesanOrtu').textContent = state.pesanOrtu;
+            state.totalBintang = state.lkpdBenar + state.quizBenar;
+            document.getElementById('dashTotalBintang').textContent = state.totalBintang;
+
+            // Level & badge
+            const level = getLevel(state.totalBintang);
+            const badge = document.getElementById('levelBadge');
+            const icons = ['seedling', 'leaf', 'tree', 'trophy', 'crown'];
+            const labels = ['Pemula', 'Tumbuh', 'Kokoh', 'Juara', 'Legenda'];
+            const idx = Math.min(level, 4);
+            badge.innerHTML = `<i class="fas fa-${icons[idx]}"></i> ${labels[idx]}`;
+
+            // Pohon progres
+            const trees = document.querySelectorAll('#treeProgress .fa-tree');
+            trees.forEach((el, i) => {
+                el.classList.toggle('aktif', i < level);
+            });
+
+            if (state.totalBintang === 6) {
+                triggerConfetti();
+            }
+        }
+
+        function getLevel(bintang) {
+            if (bintang >= 6) return 5;
+            if (bintang >= 4) return 4;
+            if (bintang >= 3) return 3;
+            if (bintang >= 2) return 2;
+            if (bintang >= 1) return 1;
+            return 0;
+        }
+
+        // ========== CONFETTI ==========
+        function triggerConfetti() {
+            const container = document.createElement('div');
+            container.className = 'confetti-container';
+            document.body.appendChild(container);
+            const colors = ['#6c8cff', '#a78bfa', '#f9a8d4', '#fcd34d', '#34d399', '#f87171'];
+            for (let i = 0; i < 80; i++) {
+                const el = document.createElement('div');
+                el.className = 'confetti';
+                el.style.left = Math.random() * 100 + '%';
+                el.style.top = '-10px';
+                el.style.background = colors[Math.floor(Math.random() * colors.length)];
+                el.style.width = (Math.random() * 8 + 4) + 'px';
+                el.style.height = (Math.random() * 8 + 4) + 'px';
+                el.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+                el.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                el.style.animationDelay = (Math.random() * 1.5) + 's';
+                container.appendChild(el);
+            }
+            setTimeout(() => container.remove(), 4000);
+        }
+
+        // ========== LKPD ==========
+        function periksaSemua() {
+            let benar = 0;
+            const q1 = document.querySelector('input[name="q1"]:checked');
+            const soal1 = document.getElementById('soal1');
+            if (q1) {
+                soal1.classList.add('show-feedback');
+                if (q1.value === 'kakek') {
+                    soal1.querySelector('.jawaban-benar').style.display = 'block';
+                    soal1.querySelector('.jawaban-salah').style.display = 'none';
+                    benar++;
+                } else {
+                    soal1.querySelector('.jawaban-benar').style.display = 'none';
+                    soal1.querySelector('.jawaban-salah').style.display = 'block';
+                }
+            } else {
+                alert('Jawab soal nomor 1 dulu ya!');
+                return;
+            }
+
+            const q2 = document.querySelector('input[name="q2"]:checked');
+            const soal2 = document.getElementById('soal2');
+            if (q2) {
+                soal2.classList.add('show-feedback');
+                if (q2.value === 'nenek') {
+                    soal2.querySelector('.jawaban-benar').style.display = 'block';
+                    soal2.querySelector('.jawaban-salah').style.display = 'none';
+                    benar++;
+                } else {
+                    soal2.querySelector('.jawaban-benar').style.display = 'none';
+                    soal2.querySelector('.jawaban-salah').style.display = 'block';
+                }
+            } else {
+                alert('Jawab soal nomor 2 dulu ya!');
+                return;
+            }
+
+            const input = document.getElementById('jawabanSaudara');
+            const val = input.value.trim();
+            const benar3 = document.getElementById('feedbackSaudaraBenar');
+            const salah3 = document.getElementById('feedbackSaudaraSalah');
+            if (val.length > 0) {
+                benar3.style.display = 'block';
+                salah3.style.display = 'none';
+                benar++;
+            } else {
+                benar3.style.display = 'none';
+                salah3.style.display = 'block';
+            }
+
+            state.lkpdBenar = benar;
+            updateDashboard();
+        }
+
+        function cekSaudara() {
+            const input = document.getElementById('jawabanSaudara');
+            const val = input.value.trim();
+            const benar = document.getElementById('feedbackSaudaraBenar');
+            const salah = document.getElementById('feedbackSaudaraSalah');
+            if (val.length > 0) {
+                benar.style.display = 'block';
+                salah.style.display = 'none';
+            } else {
+                benar.style.display = 'none';
+                salah.style.display = 'block';
+            }
+        }
+
+        function resetSaudara() {
+            document.getElementById('jawabanSaudara').value = '';
+            document.getElementById('feedbackSaudaraBenar').style.display = 'none';
+            document.getElementById('feedbackSaudaraSalah').style.display = 'none';
+        }
+
+        function resetSemua() {
+            document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+            document.querySelectorAll('.soal').forEach(s => {
+                s.classList.remove('show-feedback');
+                s.querySelector('.jawaban-benar').style.display = 'none';
+                s.querySelector('.jawaban-salah').style.display = 'none';
+            });
+            resetSaudara();
+        }
+
+        // ========== INTERAKSI ==========
+        function kirimPesan(tipe) {
+            let pesan = '';
+            let container = '';
+            let label = '';
+            if (tipe === 'guru') {
+                pesan = document.getElementById('pesanGuru').value.trim();
+                container = document.getElementById('feedGuru');
+                label = 'Guru';
+            } else {
+                pesan = document.getElementById('pesanOrtu').value.trim();
+                container = document.getElementById('feedOrtu');
+                label = 'Orang Tua';
+            }
+            if (!pesan) {
+                alert('Tulis pesan terlebih dahulu!');
+                return;
+            }
+            const item = document.createElement('div');
+            item.className = 'feedback-item';
+            const now = new Date();
+            const time = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+            item.innerHTML = `<strong>${label}:</strong> <span>${pesan}</span> <small>— ${time} · baru saja</small>`;
+            container.prepend(item);
+            if (tipe === 'guru') {
+                document.getElementById('pesanGuru').value = '';
+                state.pesanGuru++;
+            } else {
+                document.getElementById('pesanOrtu').value = '';
+                state.pesanOrtu++;
+            }
+            updateDashboard();
+        }
+
+        // ========== EVALUASI (QUIZ) ==========
+        const quizKeys = {
+            quiz1: 'a',
+            quiz2: 'a',
+            quiz3: 'a'
+        };
+
+        function periksaQuiz() {
+            let skor = 0;
+            for (const [id, jawaban] of Object.entries(quizKeys)) {
+                const item = document.getElementById(id);
+                const selected = item.querySelector(`input[name="${id}"]:checked`);
+                if (selected) {
+                    item.classList.add('show-feedback');
+                    const feedback = item.querySelector('.quiz-feedback');
+                    if (selected.value === jawaban) {
+                        feedback.className = 'quiz-feedback benar';
+                        feedback.textContent = '✅ Benar! ' + getPenjelasan(id);
+                        skor++;
+                    } else {
+                        feedback.className = 'quiz-feedback salah';
+                        feedback.textContent = '❌ Kurang tepat. ' + getPenjelasanSalah(id);
+                    }
+                    feedback.style.display = 'block';
+                } else {
+                    alert('Jawab semua pertanyaan kuis dulu ya!');
+                    return;
+                }
+            }
+            document.getElementById('skorAngka').textContent = skor;
+            state.quizBenar = skor;
+            updateDashboard();
+        }
+
+        function getPenjelasan(id) {
+            const map = {
+                quiz1: 'Kakek adalah ayah dari ayah atau ibu.',
+                quiz2: 'Anak-anak dari ayah dan ibu adalah saudara.',
+                quiz3: 'Ibu dari ibu adalah nenek.'
+            };
+            return map[id] || '';
+        }
+
+        function getPenjelasanSalah(id) {
+            const map = {
+                quiz1: 'Kakek adalah ayah dari orang tuamu.',
+                quiz2: 'Saudara adalah anak-anak dari ayah dan ibu.',
+                quiz3: 'Ibu dari ibumu adalah nenek.'
+            };
+            return map[id] || '';
+        }
+
+        function resetQuiz() {
+            document.querySelectorAll('#quizBox input[type="radio"]').forEach(r => r.checked = false);
+            document.querySelectorAll('#quizBox .quiz-item').forEach(item => {
+                item.classList.remove('show-feedback');
+                const fb = item.querySelector('.quiz-feedback');
+                fb.style.display = 'none';
+            });
+            document.getElementById('skorAngka').textContent = '0';
+        }
+
+        // ========== NAVIGASI AKTIF ==========
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-menu a');
+
+        window.addEventListener('scroll', () => {
+            let current = 'beranda';
+            sections.forEach(section => {
+                const top = section.offsetTop - 120;
+                if (window.scrollY >= top) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // ========== INISIALISASI ==========
+        updateDashboard();
+    </script>
+
+</body>
+</html>
